@@ -1,0 +1,78 @@
+<html>
+
+    <head>
+        <script type="text/javascript" src=""></script>
+        <link rel="stylesheet" type="text/css" href="welcome.css">
+    </head>
+
+    <body>
+        <div id="maincontainer">
+            <div id="logo">
+                <img src="wimage.png">
+            </div>
+            <div id="logincontainer">
+                <form id="loginform" method="post" action="#" onsubmit="">
+                    <div class="inner">
+                        <div class="row">
+                            <label for="loginemail">Email as username</label>
+                            <input id="loginemail" name="email" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="loginpassword">Password</label>
+                            <input id="loginpassword" name="loginpassword" required="" type="password">
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <button id="loginsubmit" type="submit" value="login" name="login">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div id="signupcontainer">
+                <form id="signupform" method="post" action="#" onsubmit="">
+                    <div class="inner">
+                        <div class="row">
+                            <label for="signupemail">Email as username</label>
+                            <input id="signupemail" name="email" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="signuppassword">Password</label>
+                            <input id="signuppassword" name="password" required="" type="password">
+                        </div>
+                        <div class="row">
+                            <label for="repeatpassword">Repeat password</label>
+                            <input id="repeatpassword" name="rptpassword" required="" type="password">
+                        </div>
+                        <div class="row">
+                            <label for="firstname">First name</label>
+                            <input id="firstname" name="firstname" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="familyname">Family name</label>
+                            <input id="familyname" name="familyname" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required="">
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="city">City</label>
+                            <input id="city" name="city" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="country">Country</label>
+                            <input id="country" name="country" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <button id="signupsubmit" type="submit" value="signup" name="signup">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>

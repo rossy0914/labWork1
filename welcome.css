@@ -1,0 +1,23 @@
+#maincontainer{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 600px;
+}
+
+#logo{
+    float: left;
+    padding: 10px;
+
+}
+
+#logincontainer{
+    float: right;
+
+}
+
+#signupcontainer{
+    float: right;
+
+}
