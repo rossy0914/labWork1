@@ -3,7 +3,85 @@
        <link href="client.css" type="text/css" rel="stylesheet">
        <script src="client.js" type="text/javascript"></script>
        <script src="serverstub.js" type="text/javascript"></script>
+        <script id="welcomeView" type="text/view">
+        <div id="maincontainer">
+            <div id="logo">
+                <img src="wimage.png">
+            </div>
+            <div id="logincontainer">
+                <form id="loginform" method="post" action="javascript:login()" >
+                    <div class="inner">
+                        <div class="row">
+                            <label for="loginemail">Email as username</label>
+                            <input id="loginemail" name="email" required="" type="email">
+                        </div>
+                        <div class="row">
+                            <label for="loginpassword">Password</label>
+                            <input id="loginpassword" name="loginpassword" required="" type="password">
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <button id="loginsubmit" type="submit" value="login" name="login" form="loginform">Login</button>
+                    </div>
+                    <div id="loginalert" class="alert"></div>
+                </form>
+            </div>
+            <div id="signupcontainer">
+                <form id="signupform" method="post" action="javascript:signup()" onsubmit="javascript:signup()" >
+                    <div class="inner">
+                        <div class="row">
+                            <label for="signupemail">Email as username</label>
+                            <input id="signupemail" name="email" required="" type="email" >
+                        </div>
+                        <div class="row">
+                            <label for="signuppassword">Password</label>
+                            <input id="signuppassword" name="password" required="" type="password" oninput="javascript:validatePwd('signuppassword','repeatpassword')">
+                        </div>
+                        <div class="row">
+                            <label for="repeatpassword">Repeat password</label>
+                            <input id="repeatpassword" name="rptpassword" required="" type="password" oninput="javascript:validatePwd('signuppassword','repeatpassword')">
+                        </div>
+                        <div class="row">
+                            <label for="firstname">First name</label>
+                            <input id="firstname" name="firstname" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="familyname">Family name</label>
+                            <input id="familyname" name="familyname" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required="">
+                                <option value="female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <label for="city">City</label>
+                            <input id="city" name="city" required="" type="text">
+                        </div>
+                        <div class="row">
+                            <label for="country">Country</label>
+                            <input id="country" name="country" required="" type="text">
+                        </div>
+                    </div>
+                    <div class="inner">
+                        <button id="signupsubmit" type="submit" value="signup" name="signup" form="signupform">Sign Up</button>
+                    </div>
+                    <div id="signupalert" class="alert"></div>
+                </form>
+            </div>
+        </div>
+
+        </script>
+        <script id="profileView" type="text/view">
+
+        </script>
+
     </head>
     <body>
+        <div id="welcomePage"></div>
+        <div id="profilePage"></div>
     </body>
 </html>

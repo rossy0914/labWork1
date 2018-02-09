@@ -4,20 +4,22 @@
     margin-right: auto;
     height: 400px;
     width: 600px;
+    border: 0.5px solid;
 }
 
-#logo{
+.tab, .tab-cur{
+    width: 33.1%;
+    height: 50px;
     float: left;
-    padding: 10px;
-
+    border: dimgrey 0.5px solid;
+    background-color: white;
+    color: black;
+    font-size: large;
+    text-align: center;
+    line-height: 50px;
 }
 
-#logincontainer{
-    float: right;
-
-}
-
-#signupcontainer{
-    float: right;
-
+.tab-cur{
+    background-color: grey;
+    color: white;
 }

@@ -1,0 +1,72 @@
+#maincontainer{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 600px;
+}
+
+#logo {
+    display: flex;
+    border: dimgrey solid 1px;
+    float: left;
+}
+
+#logincontainer{
+    display: flex;
+    border: dimgrey solid 1px;
+    float: right;
+    width: 250px;
+    background-color: white;
+}
+
+#signupcontainer{
+    display: flex;
+    margin-bottom: auto;
+    border: dimgrey solid 1px;
+    float: right;
+    width: 250px;
+    background-color: white;
+}
+
+body{
+    background-color: #90BDD4;
+}
+
+label{
+    font-size: small;
+}
+
+.inner{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: right;
+}
+
+input,select{
+    float: right;
+    width: 50%;
+    margin-right: 2px;
+}
+
+button{
+    float: right;
+    margin-right: 10px;
+}
+
+label{
+    padding-left: 2px;
+}
+.row{
+    width: 250px;
+    margin-top: 10px;
+}
+
+form{
+    width: 100%;
+}
+
+.alert{
+    font-size: small;
+    color: red;
+}
