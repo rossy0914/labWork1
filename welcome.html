@@ -1,7 +1,7 @@
 <html>
 
     <head>
-        <script type="text/javascript" src=""></script>
+        <script type="text/javascript" src="client.js"></script>
         <link rel="stylesheet" type="text/css" href="welcome.css">
     </head>
 
@@ -11,20 +11,49 @@
             <div id="browsetab" class="tab">Browse</div>
             <div id="accounttab" class="tab">Account</div>
 
-            <div id="homecontent" class="content-cur">
-                    
+            <div id="infocontent" class="content-cur">
+                Email:<div id="infoemail"></div>
+                First Name:<div id="infofirstname"></div>
+                Last Name:<div id="infolastname"></div>
+                Gender:<div id="infogender"></div>
+                City:<div id="infocity"></div>
+                Country:<div id="infocountry"></div>
             </div>
-            <div id="browsecontent" class="content"></div>
-            <div id="accontcontent" class="content">
+            <div id="homecontent" class="content-cur">
+                <form id="postform" action="javascript:postmessage()" onsubmit="javascript:postmessage('own')">
+                    <label for="addpost">Leave a Message!</label>
+                    <textarea id="addpost" form="postform" required="">Hi!</textarea>
+                    <button id="postsubmit" type="submit" form="postform">Post</button>
+                    <div id="postalert" class="alert"></div>
+                </form>
+                <h2 id="walllabel"></h2>
+                <button id="refreshwall" onclick="javascript:refreshbutton()">Refresh</button>
+                <div id="wallalert" class="alert"></div>
+                <table id="messagewall">
+                    <tr>
+                        <th>Author</th><th>Message</th>
+                    </tr>
+                </table>
+            </div>
+            <div id="homecontent" class="content-cur"></div>
+            <div id="browsecontent" class="content">
+                <form id="searchform" action="javascript:searchuser()" onsubmit="javascript:searchuser()">
+                    <label for="searchemail">Enter a user's email:</label>
+                    <input id="searchemail" type="email" required="">
+                    <button id="searchsubmit" type="submit" form="searchform">Search</button>
+                    <div id="searchalert" class="alert"></div>
+                </form>
+            </div>
+            <div id="accountcontent" class="content">
                 <label>Change Your Password:</label>
                 <form id="changepwdform" method="post" action="javascript:changePwd()" onsubmit="">
                     <div class="inner">
                         <div class="row">
-                            <label for="oldpwd">Old Password:</label>
+                            <label for="oldpwd">Old Password:   </label>
                             <input id="oldpwd" type="password">
                         </div>
                         <div class="row">
-                            <label for="newpwd">New Password:</label>
+                            <label for="newpwd">New Password:   </label>
                             <input id="newpwd" type="password" oninput="javascript:validatePwd('newpwd','repeatnewpwd')">
                         </div>
                         <div class="row">

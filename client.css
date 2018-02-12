@@ -33,31 +33,29 @@ body{
     background-color: #90BDD4;
 }
 
-label{
-    font-size: small;
-}
-
-.inner{
+#welcomePage .inner{
     margin-top: 5px;
     margin-bottom: 5px;
     float: right;
 }
 
-input,select{
+
+#welcomePage input,select{
     float: right;
     width: 50%;
     margin-right: 2px;
 }
 
-button{
+#welcomePage button{
     float: right;
     margin-right: 10px;
 }
 
-label{
+#welcomePage label{
     padding-left: 2px;
+    font-size: small;
 }
-.row{
+#welcomePage .row{
     width: 250px;
     margin-top: 10px;
 }
@@ -70,3 +68,66 @@ form{
     font-size: small;
     color: red;
 }
+
+.tab, .tab-cur{
+    width: 33.1%;
+    height: 50px;
+    float: left;
+    border: dimgrey 0.5px solid;
+    background-color: white;
+    color: black;
+    font-size: large;
+    text-align: center;
+    line-height: 50px;
+}
+
+.tab-cur{
+    background-color: grey;
+    color: white;
+}
+
+.content{
+    display: none;
+}
+
+#profilePage row{
+    margin-top: 10px;
+}
+
+#profilePage label{
+    padding-right:4em;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+#profilePage {
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+#logout{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+#browsecontent{
+    position: relative;
+    float: top;
+}
+
+#profilearea th{
+    text-align: left;
+}
+
+#addpost{
+    width:100%;
+}
+
+#profilePage button{
+    float: right;
+    margin-top: 5px;
+    width: 75px;
+    height: 30px;
+}
+
