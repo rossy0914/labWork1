@@ -111,11 +111,6 @@ form{
     top: 10px;
 }
 
-#browsecontent{
-    position: relative;
-    float: top;
-}
-
 #profilearea th{
     text-align: left;
 }
@@ -130,4 +125,5 @@ form{
     width: 75px;
     height: 30px;
 }
+
 

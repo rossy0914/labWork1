@@ -14,7 +14,9 @@ var displayView = {
     show: function (id) {
         document.getElementById(id + "Page").innerHTML = document.getElementById(id + "View").innerHTML;
         if (id == "profile") {
+            useremail = serverstub.getUserDataByToken(JSON.parse(localStorage.getItem("token"))).data.email;
             attachHandler();
+            showMyProfile();
             refreshwall(useremail);
         }
     },
@@ -23,20 +25,35 @@ var displayView = {
     }
 };
 
-var validatePwd = function(password_id, repeatpassword_id){
+var validatePwd = function(password_id, repeatpassword_id,style){
 
     var password = document.getElementById(password_id);
     var repeatpassword = document.getElementById(repeatpassword_id);
 
-    if(password.value.length >= passwordMIN) {
-        password.setCustomValidity("");
-        if (repeatpassword.value == password.value) {
-            repeatpassword.setCustomValidity("");
-        }else {
-            repeatpassword.setCustomValidity("The password is not same!");
+    if(style==="custom") {
+        if (password.value.length >= passwordMIN) {
+            password.setCustomValidity("");
+            if (repeatpassword.value == password.value) {
+                repeatpassword.setCustomValidity("");
+            } else {
+                repeatpassword.setCustomValidity("The password is not same!");
+            }
+        } else {
+            password.setCustomValidity("Password length should longer than " + passwordMIN);
         }
-    }else{
-        password.setCustomValidity("Password length should longer than " + passwordMIN);
+    }else if(style==="textchange"){
+        var changealert = document.getElementById("changepwdAlert");
+        if (password.value.length >= passwordMIN) {
+            changealert.innerText = "";
+            if (repeatpassword.value == password.value) {
+                changealert.innerText = "";
+            } else {
+                changealert.innerText = "The password is not same!";
+            }
+        } else {
+            changealert.innerText = "Password length should longer than " + passwordMIN;
+        }
+
     }
 
 }
@@ -66,9 +83,9 @@ var signup = function(){
             localStorage.setItem("token", JSON.stringify(token));
             displayView.show("profile");
             displayView.hide("welcome");
-            showProfile(email);
-            refreshwall(email);
             useremail = email;
+            showMyProfile();
+            refreshwall(email);
         }
     }
 };
@@ -86,9 +103,9 @@ var login = function(){
         localStorage.setItem("token", JSON.stringify(token));
         displayView.show("profile");
         displayView.hide("welcome");
-        showProfile(email);
-        refreshwall(email);
         useremail = email;
+        showMyProfile();
+        refreshwall(email);
     }
 }
 
@@ -101,20 +118,27 @@ var changePwd = function(){
     document.getElementById("changepwdAlert").innerText = result.message;
 }
 
-var showProfile = function(email){
+var showOthersProfile = function(email){
     var token = JSON.parse(localStorage.getItem("token"));
     var dataresult = serverstub.getUserDataByEmail(token, email);
     if(dataresult.success){
 
         document.getElementById("infoemail").innerText = dataresult.data.email;
         document.getElementById("infofirstname").innerText = dataresult.data.firstname;
-        document.getElementById("infolastname").innerText = dataresult.data.familyname;
+        document.getElementById("infofamilyname").innerText = dataresult.data.familyname;
         document.getElementById("infogender").innerText = dataresult.data.gender;
         document.getElementById("infocity").innerText = dataresult.data.city;
         document.getElementById("infocountry").innerText = dataresult.data.country;
     }
     document.getElementById("infoalert").innerHTML = dataresult.message;
-    document.getElementById("profileheader").innerHTML = dataresult.data.firstname + dataresult.data.familyname;
+    document.getElementById("profileheader").innerHTML = dataresult.data.firstname + " " + dataresult.data.familyname + "'s Profile";
+}
+
+var showMyProfile = function(){
+
+    showOthersProfile(useremail);
+    document.getElementById("profileheader").innerHTML = "Your Profile";
+
 }
 
 var refreshbutton = function(){
@@ -139,7 +163,11 @@ var refreshwall = function (email) {
             wall.innerHTML += msg;
         }
     }
-    document.getElementById("wallheader").innerHTML = email + "'s Message Wall:";
+    if(email === useremail){
+        document.getElementById("wallheader").innerHTML = "Your Message Wall:";
+    }else{
+        document.getElementById("wallheader").innerHTML = email + "'s Message Wall:";
+    }
 }
 
 var postmessage = function(){
@@ -164,7 +192,11 @@ var searchuser = function(){
     var searchresult = serverstub.getUserDataByEmail(token,searchemail);
     document.getElementById("searchalert").innerText = searchresult.message;
     if(searchresult.success){
-        showProfile(searchemail);
+        if(searchemail===useremail) {
+            showMyProfile();
+        }else{
+            showOthersProfile(searchemail);
+        }
         refreshwall(searchemail);
         document.getElementById("homecontent").className = "content-cur";
     }
@@ -185,6 +217,8 @@ var attachHandler = function () {
        homeContent.className = "content-cur";
        accountContent.className = "content";
        browseContent.className = "content";
+       showMyProfile();
+       refreshwall(useremail);
     },false);
 
     accountTab.addEventListener("click",function(){
@@ -200,9 +234,13 @@ var attachHandler = function () {
         homeTab.className = "tab";
         accountTab.className = "tab";
         browseTab.className = "tab-cur";
-        homeContent.className = "content";
         accountContent.className = "content";
         browseContent.className = "content-cur";
+        if (!searchemail){
+            homeContent.className = "content";
+        }else{
+            searchuser(searchemail);
+        }
     },false);
 
     document.getElementById("logout").addEventListener("click",function(){
@@ -211,6 +249,7 @@ var attachHandler = function () {
         if(signoutresult.success){
             displayView.hide("profile");
             displayView.show("welcome");
+            localStorage.setItem("token","[]");
             useremail = "";
             searchemail = "";
             document.getElementById("loginalert").innerHTML = signoutresult.message;
@@ -222,6 +261,10 @@ var attachHandler = function () {
 window.onload = function() {
     //code that is executed as the page is loaded.
     //You shall put your own custom code here.
-    displayView.show("welcome");
     initlocalstorage();
+    if(JSON.parse(localStorage.getItem("token")).length == 0){
+        displayView.show("welcome");
+    }else{
+        displayView.show("profile");
+    }
 };

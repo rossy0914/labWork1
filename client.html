@@ -6,7 +6,7 @@
         <script id="welcomeView" type="text/view">
         <div id="maincontainer">
             <div id="logo">
-                <img src="wimage.png">
+                <img src="wimage.png" alt="Logo of Twidder!">
             </div>
             <div id="logincontainer">
                 <form id="loginform" method="post" action="javascript:login()" >
@@ -35,11 +35,11 @@
                         </div>
                         <div class="row">
                             <label for="signuppassword">Password</label>
-                            <input id="signuppassword" name="password" required="" type="password" oninput="javascript:validatePwd('signuppassword','repeatpassword')">
+                            <input id="signuppassword" name="password" required="" type="password" oninput="javascript:validatePwd('signuppassword','repeatpassword','custom')">
                         </div>
                         <div class="row">
                             <label for="repeatpassword">Repeat password</label>
-                            <input id="repeatpassword" name="rptpassword" required="" type="password" oninput="javascript:validatePwd('signuppassword','repeatpassword')">
+                            <input id="repeatpassword" name="rptpassword" required="" type="password" oninput="javascript:validatePwd('signuppassword','repeatpassword','custom')">
                         </div>
                         <div class="row">
                             <label for="firstname">First name</label>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="row">
                             <label for="gender">Gender</label>
-                            <select id="gender" name="gender" required="">
+                            <select id="gender" name="gender">
                                 <option value="female">Female</option>
                                 <option value="male">Male</option>
                                 <option value="other">Other</option>
@@ -85,7 +85,7 @@
 
             <div id="homecontent" class="content-cur">
             <div id="profilediv">
-                <h2 id="profileheader"></h1>
+                <h2 id="profileheader"></h2>
                 <table id="profilearea">
                     <tr>
                         <th>Email: </th>
@@ -96,8 +96,8 @@
                         <td id="infofirstname"></td>
                     </tr>
                     <tr>
-                        <th>Last Name: </th>
-                        <td id="infolastname"></td>
+                        <th>Family Name: </th>
+                        <td id="infofamilyname"></td>
                     </tr>
                     <tr>
                         <th>Gender: </th>
@@ -149,11 +149,11 @@
                         </div>
                         <div class="row">
                             <label for="newpwd">New Password:   </label>
-                            <input id="newpwd" type="password" oninput="javascript:validatePwd('newpwd','repeatnewpwd')">
+                            <input id="newpwd" type="password" oninput="javascript:validatePwd('newpwd','repeatnewpwd','textchange')">
                         </div>
                         <div class="row">
                             <label for="repeatnewpwd">Repeat New Password:  </label>
-                            <input id="repeatnewpwd" type="password" oninput="javascript:validatePwd('newpwd','repeatnewpwd')">
+                            <input id="repeatnewpwd" type="password" oninput="javascript:validatePwd('newpwd','repeatnewpwd','textchange')">
                         </div>
                     </div>
                     <div class="inner">
