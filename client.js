@@ -30,6 +30,8 @@ var validatePwd = function(password_id, repeatpassword_id,style){
     var password = document.getElementById(password_id);
     var repeatpassword = document.getElementById(repeatpassword_id);
 
+    // different styles for alert
+    // 'custom' for custom validity, 'textchange' for showing alerts in div
     if(style==="custom") {
         if (password.value.length >= passwordMIN) {
             password.setCustomValidity("");
@@ -59,8 +61,6 @@ var validatePwd = function(password_id, repeatpassword_id,style){
 }
 
 var signup = function(){
-
-    initlocalstorage();
 
     var email = document.getElementById("signupemail").value;
     var password = document.getElementById("signuppassword").value;
@@ -98,7 +98,6 @@ var login = function(){
     document.getElementById("loginalert").innerHTML = loginResult.message;
     var token = "";
     if(loginResult.success){
-        //document.getElementById("loginalert").style.color = "black";
         token = loginResult.data;
         localStorage.setItem("token", JSON.stringify(token));
         displayView.show("profile");
@@ -135,7 +134,7 @@ var showOthersProfile = function(email){
 }
 
 var showMyProfile = function(){
-
+    //in case of showing different views for current user or others
     showOthersProfile(useremail);
     document.getElementById("profileheader").innerHTML = "Your Profile";
 
@@ -210,6 +209,7 @@ var attachHandler = function () {
     var accountContent = document.getElementById("accountcontent");
     var browseContent = document.getElementById("browsecontent");
 
+    // Switching tabs
     homeTab.addEventListener("click",function(){
        homeTab.className = "tab-cur";
        accountTab.className = "tab";
@@ -243,6 +243,7 @@ var attachHandler = function () {
         }
     },false);
 
+    // Sign out function
     document.getElementById("logout").addEventListener("click",function(){
         var token = JSON.parse(localStorage.getItem("token"));
         var signoutresult = serverstub.signOut(token);
@@ -262,6 +263,7 @@ window.onload = function() {
     //code that is executed as the page is loaded.
     //You shall put your own custom code here.
     initlocalstorage();
+    //only when the user is logged out, it will shows the welcome view
     if(JSON.parse(localStorage.getItem("token")).length == 0){
         displayView.show("welcome");
     }else{
